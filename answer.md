@@ -64,3 +64,52 @@ biến, lồng,.... mà cơ chế của trình duyệt không xử lý được.
 Viết code trong file .scss -> chạy công cụ biên dịch -> công cụ sẽ 
 tạo ra file .css tương ứng từ file scss -> nhúng file .css mới vào
 file HTML để sử dụng. 
+
+--- 
+
+### PHẦN B — THỰC HÀNH CODE (60 điểm)
+- Bài B3 (20đ) — SCSS Refactor
+- Compile — Biên dịch SCSS → CSS và ghi lại lệnh compile trong answers.md 
+
+Bộ biên dịch Sass (Dart Sass) để chuyển đổi từ các file `.scss` nằm trong thư mục `scss/` thành file định dạng CSS chuẩn nhằm nhúng trực tiếp vào file HTML.
+
+- npm install -g sass
+- sass scss/style.scss responsive.css
+- sass scss/style.scss responsive.css --style=compressed
+- sass --watch scss/style.scss:responsive.css
+
+---
+
+### PHẦN C — PHÂN TÍCH (20 điểm)
+
+Câu C1 (10đ) — Phân tích trang web thực
+
+1. Navigation 
+- Desktop (1440px): Thanh điều hướng (Header) hiển thị đầy đủ và rộng rãi. Ô tìm kiếm (Search bar) dài ở trung tâm, các liên kết phụ (Kênh người bán, Tải ứng dụng, Kết nối...) hiển thị rõ ràng trên cùng.
+- Tablet (768px): Cấu trúc Navigation không thay đổi thành Hamburger hay Dropdown. Thay vào đó, nó bị "ép" (squished) lại. Thanh tìm kiếm bị thu ngắn, các khoảng trắng bị cắt giảm tối đa.
+- Mobile (375px): Vẫn không xuất hiện menu Hamburger. Giao diện bị vỡ khá nhiều ở phần Header do thanh tìm kiếm và các icon giỏ hàng bị bóp méo, tràn viền hoặc che khuất lẫn nhau do không đủ không gian.
+
+2. Lưới content thay đổi cột
+Sự thay đổi rõ rệt nhất nằm ở phần danh sách sản phẩm (Product Grid):
+- Desktop (1440px): Lưới hiển thị 5 cột sản phẩm.
+- Tablet (768px): Lưới tự động giảm xuống còn 4 cột sản phẩm.
+- Mobile (375px): Lưới tiếp tục giảm xuống chỉ còn 2 cột sản phẩm để cố gắng giữ cho hình ảnh không bị quá nhỏ.
+
+3. Elements bị ẩn trên mobile
+- Dựa trên ảnh chụp ở 375px, Shopee gần như không ẩn (display: none) các thành phần lớn.
+- Cột Sidebar (Bộ lọc tìm kiếm) bên trái vẫn bị ép hiển thị, dẫn đến việc nó chiếm một phần diện tích rất nhỏ, làm cho chữ bên trong bị rớt dòng và rất khó đọc. Các liên kết text nhỏ trên đỉnh Header bị che khuất hoặc tràn ra ngoài viewport thay vì được ẩn đi một cách có chủ đích.
+
+4. Font size 
+- Không có sự thay đổi rõ rệt về kích thước chữ. Font size dường như được giữ nguyên tĩnh (static) trên cả 3 màn hình. 
+- Hậu quả của việc không dùng các đơn vị chữ responsive (như rem, vw) là trên màn hình 375px, chữ ở thanh bộ lọc và tiêu đề sản phẩm bị rớt dòng liên tục, gây rối mắt.
+
+### Câu C2 (10đ) — Thiết kế Responsive Strategy
+1. Mobile 375px  
+![sodo](screenshots\mobile375pxSODO.jpg)
+
+2. Tablet 768px
+![SODO](screenshots\tablet768pxSODO.jpg)
+
+3. Desktop 1440px
+![soDO](screenshots\desktop1440SODO.jpg)
+
